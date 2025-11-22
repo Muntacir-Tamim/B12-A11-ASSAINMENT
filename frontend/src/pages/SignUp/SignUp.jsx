@@ -34,6 +34,8 @@ const SignUp = () => {
       //   formData
       // )
       const imageURL = await imageUpload(imageFile)
+      // const cloudinaryImageUrl = await imageUploadCloudinary(imageFile)
+      // console.log('Cloudinary Response ----->', cloudinaryImageUrl)
 
       //1. User Registration
       const result = await createUser(email, password)
