@@ -74,16 +74,16 @@ export const router = createBrowserRouter([
       },
 
       // Citizen
-      {
-        path: "report-issue",
-        element: (
-          <PrivateRoute>
-            <CitizenRoute>
-              <ReportIssue />
-            </CitizenRoute>
-          </PrivateRoute>
-        ),
-      },
+      // {
+      //   path: "report-issue",
+      //   element: (
+      //     <PrivateRoute>
+      //       <CitizenRoute>
+      //         <ReportIssue />
+      //       </CitizenRoute>
+      //     </PrivateRoute>
+      //   ),
+      // },
       {
         path: "my-issues",
         element: (

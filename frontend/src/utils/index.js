@@ -8,7 +8,7 @@ export const imageUpload = async (imageData) => {
     `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,
     formData,
   );
-  // return data?.data?.display_url;
+  return data?.data?.display_url;
 };
 
 // save or update user in db
