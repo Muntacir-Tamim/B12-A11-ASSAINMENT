@@ -2,10 +2,12 @@
 
 ## 🌐 Live Site URL
 
+[https://your-live-site-url.web.app](https://your-live-site-url.web.app)
+
 ## 🔐 Admin Credentials
 
-- **Email:** muntacirtamim202162@gmail.com
-- **Password:** muntacirtamim202162@gmail.com
+- **Email:** admin@civicfix.com
+- **Password:** Admin@123
 
 ---
 
