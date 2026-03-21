@@ -15,7 +15,7 @@ const useRole = () => {
     },
   });
 
-  return [data.role, isRoleLoading, data.isPremium, data.isBlocked];
+  //return [data.role, isRoleLoading, data.isPremium, data.isBlocked];
 };
 
 export default useRole;
