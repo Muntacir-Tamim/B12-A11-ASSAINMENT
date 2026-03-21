@@ -539,11 +539,9 @@ async function run() {
 
         const allowed = validTransitions[issue.status];
         if (!allowed || !allowed.includes(status))
-          return res
-            .status(400)
-            .send({
-              message: `Cannot change from ${issue.status} to ${status}`,
-            });
+          return res.status(400).send({
+            message: `Cannot change from ${issue.status} to ${status}`,
+          });
 
         const staff = await usersCollection.findOne({ email: req.tokenEmail });
 
@@ -717,13 +715,13 @@ async function run() {
     });
 
     // Get my payments (citizen)
-    app.get("/my-payments", verifyJWT, async (req, res) => {
-      const payments = await paymentsCollection
-        .find({ citizenEmail: req.tokenEmail })
-        .sort({ createdAt: -1 })
-        .toArray();
-      res.send(payments);
-    });
+    // app.get("/my-payments", verifyJWT, async (req, res) => {
+    //   const payments = await paymentsCollection
+    //     .find({ citizenEmail: req.tokenEmail })
+    //     .sort({ createdAt: -1 })
+    //     .toArray();
+    //   res.send(payments);
+    // });
 
     // =========================================================================
     // ─── ADMIN: DASHBOARD STATS ───────────────────────────────────────────────
