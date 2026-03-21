@@ -43,7 +43,7 @@ const SignUp = () => {
         email: user?.email,
         image: user?.photoURL,
       });
-      toast.success("Signup Successful");
+      //toast.success("Signup Successful");
       navigate(from, { replace: true });
     } catch (err) {
       toast.error(err?.message || "Google sign in failed");
