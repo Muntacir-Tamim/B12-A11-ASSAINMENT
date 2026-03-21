@@ -34,10 +34,10 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  // const logOut = async () => {
-  //   setLoading(true)
-  //   return signOut(auth)
-  // }
+  const logOut = async () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
   const updateUserProfile = (name, photo) => {
     return updateProfile(auth.currentUser, {

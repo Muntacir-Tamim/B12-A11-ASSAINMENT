@@ -1,16 +1,69 @@
-# React + Vite
+# CivicFix – Public Infrastructure Issue Reporting System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🌐 Live Site URL
 
-Currently, two official plugins are available:
+## 🔐 Admin Credentials
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Email:** admin@civicfix.com
+- **Password:** Admin@123
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **Citizen Issue Reporting** – Citizens can submit infrastructure issues (potholes, streetlights, water leakage, etc.) with photos, location, and category in a few clicks.
+- **Role-Based Dashboards** – Three dedicated dashboards for Citizens, Staff, and Admins, each with tailored tools and data.
+- **Live Issue Timeline** – Every issue has a full read-only timeline showing each status change, who made it, and when — for complete transparency.
+- **Staff Assignment System** – Admins assign specific staff members to issues; assigned staff instantly see tasks in their dashboard.
+- **Issue Status Workflow** – Issues move through a clear lifecycle: Pending → In-Progress → Working → Resolved → Closed, with only valid transitions allowed.
+- **Boost Priority via Payment** – Citizens can pay ৳100 via Stripe to boost an issue to high priority, pushing it to the top of all lists.
+- **Premium Subscription** – Citizens can pay ৳1,000 to become premium members and submit unlimited issues (free users capped at 3).
+- **Upvote System** – Logged-in citizens can upvote issues once to signal public importance; upvote count is visible everywhere.
+- **Admin Citizen Management** – Admins can block or unblock citizens; blocked users cannot submit, edit, upvote, or boost issues.
+- **Server-Side Search, Filter & Pagination** – The public All Issues page supports full server-side search by title/location/category, filtering by status/priority/category, and paginated results.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+**Frontend:** React 18, Vite, Tailwind CSS, TanStack Query, React Router v7, React Hook Form, Recharts, Headless UI, Firebase Auth, Axios
+
+**Backend:** Node.js, Express, MongoDB, Firebase Admin SDK, Stripe
+
+---
+
+## 📁 Project Structure
+
+```
+backend/
+├── index.js
+├── .env
+└── serviceKeyConverter.js
+
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── Dashboard/Sidebar/
+│   │   ├── Home/
+│   │   ├── Modal/
+│   │   ├── Shared/
+│   │   └── Dashboard/Statistics/
+│   ├── hooks/
+│   ├── layouts/
+│   ├── pages/
+│   │   ├── Home/
+│   │   ├── AllIssues/
+│   │   ├── IssueDetails/
+│   │   ├── Dashboard/
+│   │   │   ├── Admin/
+│   │   │   ├── Staff/
+│   │   │   ├── Citizen/
+│   │   │   └── Common/
+│   │   ├── Login/
+│   │   └── SignUp/
+│   ├── providers/
+│   ├── routes/
+│   └── utils/
+```
+
+---
