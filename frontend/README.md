@@ -6,8 +6,8 @@
 
 ## 🔐 Admin Credentials
 
-- **Email:** admin@civicfix.com
-- **Password:** Admin@123
+- **Email:** muntacirtamim202162@gmail.com
+- **Password:** muntacirtamim202162@gmail.com
 
 ---
 
