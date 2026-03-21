@@ -1,109 +1,103 @@
-import { useState } from 'react'
-import { Link } from 'react-router'
-import useAuth from '../../../hooks/useAuth'
-import logo from '../../../assets/images/logo-flat.png'
-// Icons
-import { GrLogout } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
-import { AiOutlineBars } from 'react-icons/ai'
-import { BsGraphUp } from 'react-icons/bs'
-
-// User Menu
-import MenuItem from './Menu/MenuItem'
-import AdminMenu from './Menu/AdminMenu'
-import SellerMenu from './Menu/SellerMenu'
-import CustomerMenu from './Menu/CustomerMenu'
-import useRole from '../../../hooks/useRole'
-import LoadingSpinner from '../../Shared/LoadingSpinner'
+import { useState } from "react";
+import { Link } from "react-router";
+import useAuth from "../../../hooks/useAuth";
+import useRole from "../../../hooks/useRole";
+import LoadingSpinner from "../../Shared/LoadingSpinner";
+import MenuItem from "./Menu/MenuItem";
+import AdminMenu from "./Menu/AdminMenu";
+import CitizenMenu from "./Menu/CitizenMenu";
+import StaffMenu from "./Menu/StaffMenu";
+import { GrLogout } from "react-icons/gr";
+import { FcSettings } from "react-icons/fc";
+import { AiOutlineBars } from "react-icons/ai";
+import { BsGraphUp } from "react-icons/bs";
+import { MdOutlineReportProblem } from "react-icons/md";
 
 const Sidebar = () => {
-  const { logOut } = useAuth()
-  const [isActive, setActive] = useState(false)
-  const [role, isRoleLoading] = useRole()
+  const { logOut } = useAuth();
+  const [isActive, setActive] = useState(false);
+  const [role, isRoleLoading] = useRole();
 
-  // Sidebar Responsive Handler
-  const handleToggle = () => {
-    setActive(!isActive)
-  }
+  const handleToggle = () => setActive(!isActive);
 
-  if (isRoleLoading) return <LoadingSpinner />
+  if (isRoleLoading) return <LoadingSpinner />;
 
   return (
     <>
-      {/* Small Screen Navbar, only visible till md breakpoint */}
-      <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
+      {/* Mobile top bar */}
+      <div className="bg-white text-gray-800 flex justify-between md:hidden shadow-sm">
         <div>
-          <div className='block cursor-pointer p-4 font-bold'>
-            <Link to='/'>
-              <img src={logo} alt='logo' width='100' height='100' />
+          <div className="block cursor-pointer p-4 font-bold">
+            <Link to="/" className="flex items-center gap-2">
+              <MdOutlineReportProblem className="text-blue-600 text-2xl" />
+              <span className="font-bold text-blue-700">CivicFix</span>
             </Link>
           </div>
         </div>
-
         <button
           onClick={handleToggle}
-          className='mobile-menu-button p-4 focus:outline-none focus:bg-gray-200'
+          className="mobile-menu-button p-4 focus:outline-none focus:bg-gray-200"
         >
-          <AiOutlineBars className='h-5 w-5' />
+          <AiOutlineBars className="h-5 w-5" />
         </button>
       </div>
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
-          isActive && '-translate-x-full'
-        }  md:translate-x-0  transition duration-200 ease-in-out`}
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-white
+          border-r border-gray-200 w-64 space-y-2 px-2 py-4 absolute inset-y-0 left-0 transform
+          ${isActive && "-translate-x-full"} md:translate-x-0 transition duration-200 ease-in-out`}
       >
-        <div className='flex flex-col h-full'>
-          {/* Top Content */}
-          <div>
-            {/* Logo */}
-            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-lime-100 mx-auto'>
-              <Link to='/'>
-                <img src={logo} alt='logo' width='100' height='100' />
-              </Link>
-            </div>
+        <div className="flex flex-col h-full">
+          {/* Logo */}
+          <div
+            className="w-full hidden md:flex px-4 py-3 shadow-sm rounded-lg justify-center
+            items-center bg-blue-50 mx-auto mb-4"
+          >
+            <Link to="/" className="flex items-center gap-2">
+              <MdOutlineReportProblem className="text-blue-600 text-2xl" />
+              <span className="font-bold text-blue-700 text-lg">CivicFix</span>
+            </Link>
           </div>
 
-          {/* Middle Content */}
-          <div className='flex flex-col justify-between flex-1 mt-6'>
-            {/*  Menu Items */}
+          {/* Menu */}
+          <div className="flex flex-col justify-between flex-1 mt-2">
             <nav>
-              {/* Common Menu */}
+              {/* Common: Statistics */}
               <MenuItem
                 icon={BsGraphUp}
-                label='Statistics'
-                address='/dashboard'
+                label="Statistics"
+                address="/dashboard"
               />
-              {/* Role-Based Menu */}
-              {role === 'customer' && <CustomerMenu />}
-              {role === 'seller' && <SellerMenu />}
-              {role === 'admin' && <AdminMenu />}
+
+              {/* Role-based menu */}
+              {role === "citizen" && <CitizenMenu />}
+              {role === "staff" && <StaffMenu />}
+              {role === "admin" && <AdminMenu />}
             </nav>
           </div>
 
-          {/* Bottom Content */}
+          {/* Bottom */}
           <div>
-            <hr />
-
+            <hr className="my-2" />
             <MenuItem
               icon={FcSettings}
-              label='Profile'
-              address='/dashboard/profile'
+              label="Profile"
+              address="/dashboard/profile"
             />
             <button
               onClick={logOut}
-              className='flex cursor-pointer w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+              className="flex cursor-pointer w-full items-center px-4 py-2 mt-2 text-gray-600
+                hover:bg-red-50 hover:text-red-600 transition-colors duration-300 transform rounded-lg"
             >
-              <GrLogout className='w-5 h-5' />
-
-              <span className='mx-4 font-medium'>Logout</span>
+              <GrLogout className="w-5 h-5" />
+              <span className="mx-4 font-medium">Logout</span>
             </button>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
