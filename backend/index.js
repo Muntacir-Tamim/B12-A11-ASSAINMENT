@@ -715,13 +715,13 @@ async function run() {
     });
 
     // Get my payments (citizen)
-    // app.get("/my-payments", verifyJWT, async (req, res) => {
-    //   const payments = await paymentsCollection
-    //     .find({ citizenEmail: req.tokenEmail })
-    //     .sort({ createdAt: -1 })
-    //     .toArray();
-    //   res.send(payments);
-    // });
+    app.get("/my-payments", verifyJWT, async (req, res) => {
+      const payments = await paymentsCollection
+        .find({ citizenEmail: req.tokenEmail })
+        .sort({ createdAt: -1 })
+        .toArray();
+      res.send(payments);
+    });
 
     // =========================================================================
     // ─── ADMIN: DASHBOARD STATS ───────────────────────────────────────────────
